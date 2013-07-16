@@ -99,8 +99,10 @@
 		TC_name = "Test: [HTTP] 200 reponse status (OK),value of content-type as the [HTTP] Content-Type header, and the contents of potential-file as the response body";
 
 		var ContentTypeResponsetests = [ /* scheme:[ TC name, URI, content-type] */
-		[TC_name, 'resources/ExamPLE/mmY/index.html',"text/html" ],
-		[TC_name, 'resources/ExamPLE/mmY/index.html',"application/xml"] // FFos specific - all files are "application/xml" content type 
+		[TC_name + ' [text/html]', 'resources/ExamPLE/mmY/index.html','text/html' ],
+		[TC_name + " [image/png]" , 'resources/ImaGes/~t/%7b!a%7d/~sth.png',"image/png" ],
+		[TC_name + " [text/plain]" , 'resources/ExamPLE/mmY/sth.txt',"text/plain" ],
+		[TC_name + " [application/xml]", 'resources/ExamPLE/mmY/index.html',"application/xml"] // FFos specific - all files are "application/xml" content type 
 		];
 
 		ContentTypeResponsetests.forEach(function (data, i){
@@ -116,7 +118,8 @@
 					assert_true(ev.isTrusted, "readystatechange is not a trusted event");
 					assert_false(ev.bubbles, "readystatechange does bubble");
 					if (xhr.readyState == 4 && xhr.status == 200){	
-						assert_true(xhr.getResponseHeader("Content-Type") === content_type, "[Content-Type does not mach with expected]");
+						assert_true(xhr.getResponseHeader("Content-Type") === content_type, "[Content-Type does not mach with expected, it is: "+ xhr.getResponseHeader("Content-Type") + "]");
+						alert ()
 						xhrTest.done();
 					}
 					if (xhr.readyState != 4 && xhr.status != 200 && xhr.status != 0 ){	
