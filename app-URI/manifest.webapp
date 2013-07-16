@@ -1,0 +1,21 @@
+{
+    "version": "0.1",
+    "name": "W3C app:URI compliance test",
+    "description": "w3c app:URI compliance test",
+    "launch_path": "/appURI_test.html",
+    "icons": {
+        "16": "/resources/icons/w3c-16.png",
+        "48": "/resources/icons/w3c-48.png",
+        "128": "/resources/icons/w3c-128.png"
+    },
+    "developer": {
+        "name": "Marta Pawlowska",
+        "url": "https://github.com/sysapps"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "en",
+    "permissions": {
+        "systemXHR": {"description": "XHR"}
+    },
+   "type": "privileged"
+}
