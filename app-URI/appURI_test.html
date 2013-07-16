@@ -13,10 +13,13 @@
 	<div id="log"></div>
 
 
-	<script>
-	/********************************************************************************
-	* This file that checks compliance of your solution with appLURI specification.	*
-	*********************************************************************************/
+  <script>
+  /********************************************************************************
+  * This file that checks compliance of your solution with appLURI specification.	*
+  *********************************************************************************/
+  
+  /* Check if protocol is "app" */
+  if(window.location.protocol == "app:"){
 
 	/* Logging current domain */	
 	var domain = window.location.protocol + "//"+window.location.host+"/";
@@ -271,8 +274,11 @@
 		}
 		Get_403_reponse(TC_name + " Access to resticted URI - 403 Forbidden error expected", window.location.protocol + "//f15a6d20-cefa-13e5-1972-800e20d19a76/"+'resources/ExamPLE/mmY/index.html',"" );
 
-
-	</script>
+  }
+  else{
+	document.getElementById("logs").innerHTML  = "This is a test suite for app protocol only. Test aborted due to current protocol " + window.location.protocol;
+  }
+  </script>
   </body>
 </html>
 
