@@ -21,7 +21,7 @@
   if(window.location.protocol == "app:"){
 
 	/* Logging current domain */	
-	var domain = window.location.protocol + "//"+window.location.host+"/";
+	var domain = window.location.protocol + "//" + window.location.host + "/";
 	document.getElementById("logs").innerHTML  = "Current domain: " + domain;
 		
 	/********************************************************
@@ -133,13 +133,17 @@
 		*
 		*	rules for dereferencing an app: URI => 4. Resolve URI into an absolute URL using the document's origin as the base.
 		*	rules for dereferencing an app: URI => 7. Let path be the path component of URI. 
+		*	
+		*	Character Normalization in domain name
 		*/
 
 
 		TC_name = "Test: Synthesizing an app:URI. Syntax-Based Normalization: Case Normalization";
 		var PathCaseNormalizationtests = [ /* scheme: [ TC name, URI] */
-		[TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", "resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true],
-		[TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", "resources/ImaGes/%7b%7Ba%7D%7D/Test_1/$a/sth34!.png", false]
+		[TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", domain + "resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true],
+		[TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", domain + "resources/ImaGes/%7b%7Ba%7D%7D/Test_1/$a/sth34!.png", false],
+		/* 	Character Normalization in Domain	*/
+		[TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", window.location.protocol + "//" + window.location.host.toUpperCase() + "/resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true]
 		];
 
 		PathCaseNormalizationtests.forEach(function (data, i){
@@ -151,9 +155,9 @@
 				var img = document.createElement("img");
 				img.src = elem_path; 
 				if(expected)
-					assert_true(img.src === domain+path_expected, "[Error, path=" + img.src + "   Expected="+ domain + path_expected + "]");
+					assert_true(img.src === path_expected, "[Error, path=" + img.src + "   Expected="+ domain + path_expected + "]");
 				else
-					assert_false(img.src === domain+path_expected, "[Error, path=" + img.src + "   Expected="+ domain + path_expected + "]");
+					assert_false(img.src === path_expected, "[Error, path=" + img.src + "   Expected="+ domain + path_expected + "]");
 				delete img;
 		 
 			}, name+" [case " + i + "]");
@@ -161,11 +165,8 @@
 		});
 		delete PathCaseNormalizationtests;
 
-		/**	
-		*	Character Normalization in Path	
-		*/
 		
-
+		
 
 	/************************************************************************************************
 	*	6.4 Dereferencing and retrieval of files from a container				*
