@@ -73,8 +73,6 @@
 				xhr = new XMLHttpRequest();
 				xhr.open("GET", URI, true);
 				xhr.onreadystatechange = xhrTest.step_func(function (ev) {
-					assert_true(ev.isTrusted, "readystatechange is not a trusted event");
-					assert_false(ev.bubbles, "readystatechange does bubble");
 					if (xhr.readyState == 4 && xhr.status == 200){	
 						assert_true(true);
 						xhrTest.done();
@@ -115,8 +113,6 @@
 				xhr = new XMLHttpRequest();
 				xhr.open("GET", URI, true);
 				xhr.onreadystatechange = xhrTest.step_func(function (ev) {
-					assert_true(ev.isTrusted, "readystatechange is not a trusted event");
-					assert_false(ev.bubbles, "readystatechange does bubble");
 					if (xhr.readyState == 4 && xhr.status == 200){	
 						assert_true(xhr.getResponseHeader("Content-Type") === content_type, "[Content-Type does not mach with expected, it is: "+ xhr.getResponseHeader("Content-Type") + "]");
 						alert ()
@@ -196,8 +192,6 @@
 			    	xhr = new XMLHttpRequest();
 				xhr.open("GET", URI, true);
 				xhr.onreadystatechange = xhrTest.step_func(function (ev) {
-					assert_true(ev.isTrusted, "readystatechange is not a trusted event");
-					assert_false(ev.bubbles, "readystatechange does bubble");
 					if (xhr.readyState != 4){
 						assert_true(xhr.response == expected_response,  "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
 					}
@@ -261,8 +255,6 @@
 			    	var xhr = new XMLHttpRequest();
 				xhr.open("GET", URI, true);
 				xhr.onreadystatechange = xhrTest.step_func(function (ev) {
-					assert_true(ev.isTrusted, "readystatechange is not a trusted event");
-					assert_false(ev.bubbles, "readystatechange does bubble");
 					if (xhr.readyState == 4 && xhr.status == 200){	
 						assert_true(false, "[403 error expected, got: 200 OK instead]");
 						xhrTest.done();
