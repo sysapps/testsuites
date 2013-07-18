@@ -1,7 +1,7 @@
 {
     "version": "0.1",
-    "name": "W3C app:URI compliance test",
-    "description": "w3c app:URI compliance test",
+    "name": "app:URI test suite",
+    "description": "This application is a test suite that verifies an implementation's conformance to the W3C's app: URI scheme specification.",
     "launch_path": "/appURI_test.html",
     "icons": {
         "16": "/resources/icons/w3c-16.png",
@@ -12,7 +12,6 @@
         "name": "Marta Pawlowska",
         "url": "https://github.com/sysapps"
     },
-    "installs_allowed_from": ["*"],
     "default_locale": "en",
     "permissions": {
         "systemXHR": {"description": "XHR"}
