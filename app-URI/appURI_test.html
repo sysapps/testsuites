@@ -23,15 +23,15 @@
     /* Check if protocol is "app" */
     if (window.location.protocol === "app:") {
 
-        /* Logging current domain */
+         /* Logging current domain */
         var domain = window.location.protocol + "//" + window.location.host + "/";
         document.getElementById("logs").innerHTML = "Current domain: " + domain;
 
         /********************************************************
-         * 	6.1 Synthesizing an app: URI						*
-         *														*
-         * 	link: http://app-uri.sysapps.org/#synthesizing		*
-         *														*
+         *	6.1 Synthesizing an app: URI 
+         *	
+         *	link: http://app-uri.sysapps.org/#synthesizing
+         *	
          ********************************************************/
 
         /**
@@ -42,29 +42,50 @@
 
         var TC_name = "Test: Synthesizing an app:URI. Syntax-Based Normalization";
 
-        var tmp_domain = window.location.protocol + "//" + window.location.host; // variable needed to test scheme-based normalization 
+	// variable needed to test scheme-based normalization 
+        var tmp_domain = window.location.protocol + "//" + window.location.host; 
 
         var CaseNormalizationXHRtests = [ /* scheme: [ TC name, URI] */
-            [TC_name + " XHR full path: {} => %7b%7d", domain + 'resources/ExamPLE/%7bmY%7d/z...z/index.html'],
-            [TC_name + " XHR full path: } => %7D", domain + 'resources/ExamPLE/%7bmY%7D/z...z/index.html'],
-            [TC_name + " XHR full path: {} => %7B%7D", domain + 'resources/ExamPLE/%7BmY%7D/z...z/index.html'],
-            [TC_name + " XHR full path: Capital letters in patch", domain + 'resources/ExamPLE/mmY/index.html'],
-            [TC_name + " XHR relative path: {} => %7b%7d", 'resources/ExamPLE/%7bmY%7d/z...z/index.html'],
-            [TC_name + " XHR relative path: } => %7D", 'resources/ExamPLE/%7bmY%7D/z...z/index.html'],
-            [TC_name + " XHR relative path: P. => %50%2e", 'resources/Exam%50LE/%7bmY%7d/z%2e..z/index.html'],
-            [TC_name + " XHR relative path: Capital letters in patch", 'resources/ExamPLE/mmY/index.html'],
-            [TC_name + " XHR relative path: ~ => ~", 'resources/ImaGes/~t/{!a}/~sth.png'],
-            [TC_name + " XHR relative path: ~{} => ~%7b%7d", 'resources/ImaGes/~t/%7b!a%7d/~sth.png'],
+            [TC_name + " XHR full path: {} => %7b%7d", 
+            domain + 'resources/ExamPLE/%7bmY%7d/z...z/index.html'],
+            [TC_name + " XHR full path: } => %7D", 
+            domain + 'resources/ExamPLE/%7bmY%7D/z...z/index.html'],
+            [TC_name + " XHR full path: {} => %7B%7D", 
+            domain + 'resources/ExamPLE/%7BmY%7D/z...z/index.html'],
+            [TC_name + " XHR full path: Capital letters in patch", 
+            domain + 'resources/ExamPLE/mmY/index.html'],
+            [TC_name + " XHR relative path: {} => %7b%7d", 
+            'resources/ExamPLE/%7bmY%7d/z...z/index.html'],
+            [TC_name + " XHR relative path: } => %7D", 
+            'resources/ExamPLE/%7bmY%7D/z...z/index.html'],
+            [TC_name + " XHR relative path: P. => %50%2e", 
+            'resources/Exam%50LE/%7bmY%7d/z%2e..z/index.html'],
+            [TC_name + " XHR relative path: Capital letters in patch", 
+            'resources/ExamPLE/mmY/index.html'],
+            [TC_name + " XHR relative path: ~ => ~", 
+            'resources/ImaGes/~t/{!a}/~sth.png'],
+            [TC_name + " XHR relative path: ~{} => ~%7b%7d", 
+            'resources/ImaGes/~t/%7b!a%7d/~sth.png'],
+            
             /*  Percent-Encoding Normalization*/
-            [TC_name + " Percent-Encoding Normalization - XHR full path: c. => %63%2e", domain + 'resources/ExamPLE/%7bmY%7d/z%2e..z/index.html'],
-            [TC_name + " Percent-Encoding Normalization - XHR full path: P. => %50%2e", domain + 'resources/Exam%50LE/%7bmY%7d/z%2e..z/index.html'],
-            [TC_name + " Percent-Encoding Normalization - XHR relative path: {} => %7B%7D", 'resources/ExamPLE/%7BmY%7D/z...z/index.html'],
-            [TC_name + " Percent-Encoding Normalization - XHR relative path: c. => %63%2e", 'resources/ExamPLE/%7bmY%7d/z%2e..z/index.html'],
-            [TC_name + " XHR relative path: ~{} => ~%7b%7d", 'resources/ImaGes/~t/%7b!a%7d/~sth.png'],
+            [TC_name + " Percent-Encoding Normalization - XHR full path: c. => %63%2e", 
+            domain + 'resources/ExamPLE/%7bmY%7d/z%2e..z/index.html'],
+            [TC_name + " Percent-Encoding Normalization - XHR full path: P. => %50%2e", 
+            domain + 'resources/Exam%50LE/%7bmY%7d/z%2e..z/index.html'],
+            [TC_name + " Percent-Encoding Normalization - XHR relative path: {} => %7B%7D", 
+            'resources/ExamPLE/%7BmY%7D/z...z/index.html'],
+            [TC_name + " Percent-Encoding Normalization - XHR relative path: c. => %63%2e", 
+            'resources/ExamPLE/%7bmY%7d/z%2e..z/index.html'],
+            [TC_name + " XHR relative path: ~{} => ~%7b%7d", 
+            'resources/ImaGes/~t/%7b!a%7d/~sth.png'],
+            
             /*  Path Segment Normalization */
-            [TC_name + " Path Segment Normalization: using '../..' in path ", 'resources/ExamPLE/mmY/../../ImaGes/~t/%7b!a%7d/~sth.png'],
+            [TC_name + " Path Segment Normalization: using '../..' in path ", 
+            'resources/ExamPLE/mmY/../../ImaGes/~t/%7b!a%7d/~sth.png'],
+            
             /*  Scheme-Based Normalization */
-            [TC_name + " Scheme-Based Normalization: domain:/", tmp_domain + ':/resources/ImaGes/~t/%7b!a%7d/~sth.png']
+            [TC_name + " Scheme-Based Normalization: domain:/", 
+            tmp_domain + ':/resources/ImaGes/~t/%7b!a%7d/~sth.png']
         ];
 
         CaseNormalizationXHRtests.forEach(function (data, i) {
@@ -81,7 +102,8 @@
                         xhrTest.done();
                     }
                     if (xhr.readyState !== 4 && xhr.status !== 200 && xhr.status !== 0) {
-                        assert_true(false, "[ Error: readyState=" + xhr.readyState + " satus=" + xhr.status + "] ");
+                        assert_true(false, 
+                        "[ Error: readyState=" + xhr.readyState + " satus=" + xhr.status + "] ");
                     }
                 });
                 xhr.send();
@@ -94,7 +116,8 @@
         /**
          *	ContentType reponse
          *
-         *	rules for dereferencing an app: URI => 8. Let potential-file be the result of attempting locate the file at path
+         *	rules for dereferencing an app: URI => 
+		  8. Let potential-file be the result of attempting locate the file at path
          */
 
         TC_name = "Test: [HTTP] 200 reponse status (OK),value of content-type as the [HTTP] Content-Type header, and the contents of potential-file as the response body";
@@ -116,12 +139,15 @@
                 xhr.open("GET", URI, true);
                 xhr.onreadystatechange = xhrTest.step_func(function (ev) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        assert_true(xhr.getResponseHeader("Content-Type") === content_type, "[Content-Type does not mach with expected, it is: " + xhr.getResponseHeader("Content-Type") + "]");
-                        alert()
+                        assert_true(xhr.getResponseHeader("Content-Type") === content_type, 
+                        "[Content-Type does not mach with expected, it is: " 
+                        + xhr.getResponseHeader("Content-Type") + "]");
+                        
                         xhrTest.done();
                     }
                     if (xhr.readyState !== 4 && xhr.status !== 200 && xhr.status !== 0) {
-                        assert_true(false, "[ Error: readyState=" + xhr.readyState + " satus=" + xhr.status + "] ");
+                        assert_true(false, 
+                        "[ Error: readyState=" + xhr.readyState + " satus=" + xhr.status + "] ");
                     }
                 });
                 xhr.send();
@@ -144,10 +170,15 @@
 
         TC_name = "Test: Synthesizing an app:URI. Syntax-Based Normalization: Case Normalization";
         var PathCaseNormalizationtests = [ /* scheme: [ TC name, URI] */
-            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", domain + "resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true],
-            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", domain + "resources/ImaGes/%7b%7Ba%7D%7D/Test_1/$a/sth34!.png", false],
+            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", 
+            domain + "resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true],
+            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", 
+            domain + "resources/ImaGes/%7b%7Ba%7D%7D/Test_1/$a/sth34!.png", false],
+            
             /* 	Character Normalization in Domain	*/
-            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", window.location.protocol + "//" + window.location.host.toUpperCase() + "/resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true]
+            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", 
+            window.location.protocol + "//" + window.location.host.toUpperCase() 
+            + "/resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true]
         ];
 
         PathCaseNormalizationtests.forEach(function (data, i) {
@@ -159,9 +190,11 @@
                 var img = document.createElement("img");
                 img.src = elem_path;
                 if (expected)
-                    assert_true(img.src === path_expected, "[Error, path=" + img.src + "   Expected=" + domain + path_expected + "]");
+                    assert_true(img.src === path_expected, 
+                    "[Error, path=" + img.src + "   Expected=" + domain + path_expected + "]");
                 else
-                    assert_false(img.src === path_expected, "[Error, path=" + img.src + "   Expected=" + domain + path_expected + "]");
+                    assert_false(img.src === path_expected, 
+                    "[Error, path=" + img.src + "   Expected=" + domain + path_expected + "]");
                 delete img;
 
             }, name + " [case " + i + "]");
@@ -173,22 +206,24 @@
 
 
         /********************************************************************************************
-         *	6.4 Dereferencing and retrieval of files from a container								*
-         *																							*
-         * 	link: http://app-uri.sysapps.org/#dereferencing-and-retrieval-of-files-from-a-container	*
-         *																							*
+         *	6.4 Dereferencing and retrieval of files from a container 
+         *	 
+         *	link: http://app-uri.sysapps.org/#dereferencing-and-retrieval-of-files-from-a-container 
+         *	
          ********************************************************************************************/
 
         /**	
          *	404 Not Found error - response body MUST be empty
          *
-         *	rules for dereferencing an app: URI => 9. If potential-file is not found at the given path inside the container, return a [HTTP] 404 Not Found response.
+         *	rules for dereferencing an app: URI => 
+		  9. If potential-file is not found at the given path inside the container, return a [HTTP] 404 Not Found response.
          */
 
         TC_name = "Test: 6.4 Dereferencing and retrieval of files from a container";
 
         var CompareResponseBodytests = [ //[ TC name, URI, expected_response]
-            [TC_name + " 404 Not Found error expected", 'resources/ImaGes/~t/%7b!a%7d/~sth11.png', ""]
+            [TC_name + " 404 Not Found error expected", 
+            'resources/ImaGes/~t/%7b!a%7d/~sth11.png', ""]
         ];
 
         CompareResponseBodytests.forEach(function (data, i) {
@@ -202,10 +237,14 @@
                 xhr.open("GET", URI, true);
                 xhr.onreadystatechange = xhrTest.step_func(function (ev) {
                     if (xhr.readyState !== 4) {
-                        assert_true(xhr.response === expected_response, "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
+                        assert_true(xhr.response === expected_response, 
+                        "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
                     }
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        assert_true(xhr.response === expected_response, "[Status 200, file found but responce != expected response; response: " + xhr.response + "]");
+                        assert_true(xhr.response === expected_response, 
+                        "[Status 200, file found but responce != expected response; response: " 
+                        + xhr.response + "]");
+                        
                         xhrTest.done();
                     }
                 });
@@ -219,7 +258,8 @@
         /**	
          *	501 Method Not Implemented error  - response body MUST be empty
          *
-         *	rules for dereferencing an app: URI => 1. If the request is not a [HTTP] GET request, return a [HTTP] 501 Not Implemented response and terminate this algorithm.
+         *	rules for dereferencing an app: URI => 
+		  1. If the request is not a [HTTP] GET request, return a [HTTP] 501 Not Implemented response and terminate this algorithm.
          */
 
 
@@ -231,24 +271,29 @@
                 xhr.open("gett", URI, true);
                 xhr.onreadystatechange = xhrTest.step_func(function (ev) {
                     if (xhr.readyState !== 4 && xhr.status === 501) {
-                        assert_true(xhr.response === expected_response, "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
+                        assert_true(xhr.response === expected_response, 
+                        "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
+                        
                         xhrTest.done();
                     }
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        assert_true(false, "[Should get 501 but got 200 OK, file found while it should not find it, non existing'gett' method used");
+                        assert_true(false, 
+                        "[Should get 501 but got 200 OK, file found while it should not find it, non existing'gett' method used");
                     }
                 });
                 xhr.send();
             });
             delete xhrTest;
         }
-        Get_501_reponse(TC_name + " 501 Method Not Implemented error expected", 'resources/ExamPLE/mmY/index.html', "");
+        Get_501_reponse(TC_name + " 501 Method Not Implemented error expected", 
+        'resources/ExamPLE/mmY/index.html', "");
 
 
         /**	
          *	403 Forbidden error - response body MUST be empty
          *
-         *	rules for dereferencing an app: URI => 6. If the URI uses the scheme 'app', but the authority does not match the one assigned to this document, return a [HTTP] 403 Forbidden response and terminate this algorithm (i.e., prevent inter-application content access).
+         *	rules for dereferencing an app: URI => 
+		  6. If the URI uses the scheme 'app', but the authority does not match the one assigned to this document, return a [HTTP] 403 Forbidden response and terminate this algorithm (i.e., prevent inter-application content access).
          */
 
         function Get_403_reponse(name, URI, expected_response) {
@@ -275,7 +320,8 @@
                 xhr.send();
             });
         }
-        Get_403_reponse(TC_name + " Access to resticted URI - 403 Forbidden error expected", window.location.protocol + "//f15a6d20-cefa-13e5-1972-800e20d19a76/" + 'resources/ExamPLE/mmY/index.html', "");
+        Get_403_reponse(TC_name + " Access to resticted URI - 403 Forbidden error expected", 
+        window.location.protocol + "//f15a6d20-cefa-13e5-1972-800e20d19a76/" + 'resources/ExamPLE/mmY/index.html', "");
 
     } else {
         document.getElementById("logs").innerHTML = "This is a test suite for app protocol only. Test aborted due to current protocol " + window.location.protocol;
