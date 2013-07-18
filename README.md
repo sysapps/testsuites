@@ -3,4 +3,5 @@ testsuites
 
 Test suites for System Applications WG specs
 
-[app-URI test suite html file](app-URI/appURI_test.html)
+
+[app-URI test suite](app-URI/README.md)

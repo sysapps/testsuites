@@ -120,7 +120,8 @@
 		  8. Let potential-file be the result of attempting locate the file at path
          */
 
-        TC_name = "Test: [HTTP] 200 reponse status (OK),value of content-type as the [HTTP] Content-Type header, and the contents of potential-file as the response body";
+        TC_name = "Test: [HTTP] 200 reponse status (OK),value of content-type as the [HTTP] ";
+        TC_name += "Content-Type header, and the contents of potential-file as the response body";
 
         var ContentTypeResponsetests = [ /* scheme:[ TC name, URI, content-type] */
             [TC_name + ' [text/html]', 'resources/ExamPLE/mmY/index.html', 'text/html'],
@@ -160,7 +161,8 @@
         /**	
          *	Case Normalization in Path
          *
-         *	rules for dereferencing an app: URI => 4. Resolve URI into an absolute URL using the document's origin as the base.
+         *	rules for dereferencing an app: URI => 
+		  4. Resolve URI into an absolute URL using the document's origin as the base.
          *	rules for dereferencing an app: URI => 7. Let path be the path component of URI.
          *
          *	Character Normalization in domain name
@@ -216,12 +218,13 @@
          *	404 Not Found error - response body MUST be empty
          *
          *	rules for dereferencing an app: URI => 
-		  9. If potential-file is not found at the given path inside the container, return a [HTTP] 404 Not Found response.
+		  9. If potential-file is not found at the given path inside the container, 
+		     return a [HTTP] 404 Not Found response.
          */
 
         TC_name = "Test: 6.4 Dereferencing and retrieval of files from a container";
 
-        var CompareResponseBodytests = [ //[ TC name, URI, expected_response]
+        var CompareResponseBodytests = [ /* scheme: [TC name, URI, expected_response]*/
             [TC_name + " 404 Not Found error expected", 
             'resources/ImaGes/~t/%7b!a%7d/~sth11.png', ""]
         ];
@@ -259,7 +262,8 @@
          *	501 Method Not Implemented error  - response body MUST be empty
          *
          *	rules for dereferencing an app: URI => 
-		  1. If the request is not a [HTTP] GET request, return a [HTTP] 501 Not Implemented response and terminate this algorithm.
+		  1. If the request is not a [HTTP] GET request, 
+		     return a [HTTP] 501 Not Implemented response and terminate this algorithm.
          */
 
 
@@ -278,7 +282,9 @@
                     }
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         assert_true(false, 
-                        "[Should get 501 but got 200 OK, file found while it should not find it, non existing'gett' method used");
+                        "[Should get 501 but got 200 OK, "
+                        +"file found while it should not find it, "
+                        +"	non existing'gett' method used");
                     }
                 });
                 xhr.send();
@@ -293,7 +299,10 @@
          *	403 Forbidden error - response body MUST be empty
          *
          *	rules for dereferencing an app: URI => 
-		  6. If the URI uses the scheme 'app', but the authority does not match the one assigned to this document, return a [HTTP] 403 Forbidden response and terminate this algorithm (i.e., prevent inter-application content access).
+		  6. If the URI uses the scheme 'app', but the authority does not match
+		     the one assigned to this document, return a [HTTP] 403 Forbidden 
+		     response and terminate this algorithm 
+		     (i.e., prevent inter-application content access).
          */
 
         function Get_403_reponse(name, URI, expected_response) {
@@ -314,7 +323,9 @@
                         xhrTest.done();
                     }
                     if (xhr.readyState !== 4 && xhr.status === 403) {
-                        assert_true(xhr.response === expected_response, "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
+                        assert_true(xhr.response === expected_response, "[" 
+                        + xhr.status + " error, response:[" + xhr.response + "] " 
+                        + "]");
                     }
                 });
                 xhr.send();
@@ -324,7 +335,9 @@
         window.location.protocol + "//f15a6d20-cefa-13e5-1972-800e20d19a76/" + 'resources/ExamPLE/mmY/index.html', "");
 
     } else {
-        document.getElementById("logs").innerHTML = "This is a test suite for app protocol only. Test aborted due to current protocol " + window.location.protocol;
+        document.getElementById("logs").innerHTML = 
+        "This is a test suite for app protocol only. Test aborted due to current protocol " 
+        + window.location.protocol;
     }
 </script>
   </body>

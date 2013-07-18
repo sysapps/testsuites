@@ -7,6 +7,8 @@ You can find here:
 
 [app-URI test suite html file](appURI_test.html) 
 
-[app-URI test suite manifest file](manifest.webapp) 
+
+
+[Manifest file - can be used for building application](manifest.webapp) 
 
 [Example application: appURIcomplianceTest.zip] (appURIcomplianceTest.zip)
