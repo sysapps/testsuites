@@ -269,7 +269,8 @@
          *	400 Bad Request error - response body MUST be empty
          *
          *	rules for dereferencing an app: URI => 
-		  5. If the URI does not conform to the appuri ABNF, return a [HTTP] 400 Bad Request response and terminate this algorithm. 
+		  5. If the URI does not conform to the appuri ABNF, return a 
+		      [HTTP] 400 Bad Request response and terminate this algorithm. 
          */
 
         function Get_400_reponse(name, URI, expected_response) {
@@ -287,7 +288,9 @@
                     }
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         assert_true(false, 
-                        "[Should get 400 but got 200 OK, file found while it should not find it, since no specific file requested]");
+                        "[Should get 400 but got 200 OK, "
+                        +"file found while it should not find it, "
+                        +"since no specific file requested]");
                     }
                 });
                 xhr.send();
