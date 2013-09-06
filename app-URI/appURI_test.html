@@ -190,9 +190,9 @@
             domain + "resources/ImaGes/%7b%7Ba%7D%7D/Test_1/$a/sth34!.png", false],
             
             /* 	Character Normalization in Domain	*/
-            [TC_name, "resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", 
-            window.location.protocol + "//" + window.location.host.toUpperCase() 
-            + "/resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true]
+            [TC_name, window.location.protocol + "//" + window.location.host.toUpperCase() 
+            + "/resources/ImaGes/{{a}}/Test_1/$a/sth34!.png", 
+            domain + "resources/ImaGes/%7B%7Ba%7D%7D/Test_1/$a/sth34!.png", true]
         ];
 
         PathCaseNormalizationtests.forEach(function (data, i) {
@@ -254,7 +254,7 @@
                         assert_true(false, 
                         "[Should get 501 but got 200 OK, "
                         +"file found while it should not find it, "
-                        +"	non existing'gett' method used");
+                        +"	non existing 'gett' method used");
                     }
                 });
                 xhr.send();
@@ -323,12 +323,12 @@
                 xhr.onreadystatechange = xhrTest.step_func(function (ev) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         assert_true(false, "[403 error expected, got: 200 OK instead]");
-                        xhrTest.done();
                     }
                     if (xhr.readyState !== 4 && xhr.status === 403) {
                         assert_true(xhr.response === expected_response, "[" 
                         + xhr.status + " error, response:[" + xhr.response + "] " 
                         + "]");
+                        xhrTest.done();
                     }
                 });
                 xhr.send();
@@ -363,16 +363,13 @@
                 xhr = new XMLHttpRequest();
                 xhr.open("GET", URI, true);
                 xhr.onreadystatechange = xhrTest.step_func(function (ev) {
-                    if (xhr.readyState !== 4) {
+                    if (xhr.readyState !== 4 && xhr.status === 404) {
                         assert_true(xhr.response === expected_response, 
                         "[" + xhr.status + " error, response:[" + xhr.response + "] " + "]");
+                        xhrTest.done();
                     }
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        assert_true(xhr.response === expected_response, 
-                        "[Status 200, file found but responce != expected response; response: " 
-                        + xhr.response + "]");
-                        
-                        xhrTest.done();
+                        assert_true(false, "[404 error expected, got: 200 OK instead]");
                     }
                 });
                 xhr.send();
