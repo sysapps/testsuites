@@ -12,12 +12,26 @@ Currently available test suites:
 
 
 W3C test suites:
------------------
+=================
+
+Description
+-------------
 
 - [Tutorial: how to use testharness.js](http://darobin.github.io/test-harness-tutorial/docs/using-testharness.html)
 - [w3c test suite repository](https://github.com/w3c/web-platform-tests)
 - [w3c test suite repository information](https://github.com/w3c/web-platform-tests/blob/master/README.md)
 - [How to contribute to w3c test suite](https://github.com/w3c/web-platform-tests/blob/master/README.md#contributing)
+
+
+Resource files
+----------------
+- [testharness.js](https://github.com/w3c/testharness.js) 
+
+Optional:
+- [testharness.css](https://github.com/jgraham/testharness.js/blob/master/testharness.css)
+- [testharnessreport.js](https://github.com/jgraham/testharness.js/blob/master/testharnessreport.js)
+- [idlharness.js](https://github.com/jgraham/testharness.js/blob/master/idlharness.js)
+
 
 
 
