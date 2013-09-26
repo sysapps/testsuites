@@ -1,24 +1,17 @@
-Testsuites repository
-==========
-
-This is repository for test suites for System Applications WG specs.
-We use it internally within a group so we can solve some issues before we push it to w3c test suite.
-
-
+# System Applications WG - Testsuites Staging Repository
+This is the staging repository for test suites for System Applications WG specs.
 
 Currently available test suites:
 --------------------------------
 - [app-URI test suite](app-URI/README.md)
 
-Is it official w3c test suite?
+Is it an official w3c test suite?
 ----------------------------------
-Answer: NO
+kinda. We use it internally within a group so we can solve some issues before we push stuff to the official W3C space.
 
 How to contribute?
 =============
-
-
-Absolutely everyone is welcome (and even encouraged) to contribute to test
+Everyone is welcome (and encouraged) to contribute to test
 development, so long as you fulfill the contribution requirements detailed
 in the [Contributing Guidelines](./CONTRIBUTING.md). No test is too small or too
 simple, especially if it corresponds to something for which you've noted an
@@ -48,7 +41,8 @@ Optional:
 
 
 
-Each ready test suite will be pushed to w3v official test suite where it will be set under [w3c licence](http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html). 
+Each ready test suite will be pushed to w3v official test suite where 
+it will be set under [w3c licence](http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html). 
 
 
 
