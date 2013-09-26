@@ -1,7 +1,7 @@
 # SysApps WG - Testsuites Staging Repository
 This is the staging repository for test suites for System Applications WG specs.
 
-## Currently available test suites:
+## Test suites
 
 - [app: URI test suite](app-URI/README.md)
 
@@ -17,6 +17,10 @@ development, so long as you fulfill the contribution requirements detailed
 in the [Contributing Guidelines](./CONTRIBUTING.md). No test is too small or too
 simple, especially if it corresponds to something for which you've noted an
 interoperability bug in a browser.
+
+## License
+
+See the [W3C test suite license](http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html). 
 
 ## Helpful documents
 
