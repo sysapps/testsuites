@@ -3,7 +3,7 @@ This is the staging repository for test suites for System Applications WG specs.
 
 Currently available test suites:
 --------------------------------
-- [app-URI test suite](app-URI/README.md)
+- [app: URI test suite](app-URI/README.md)
 
 Is it an official w3c test suite?
 ----------------------------------
